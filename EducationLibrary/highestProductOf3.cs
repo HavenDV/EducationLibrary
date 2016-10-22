@@ -17,22 +17,14 @@ namespace EducationLibrary
                 throw new ArgumentException("Less than 3 items!");
             }
 
-            // We're going to start at the 3rd item (at index 2)
-            // so pre-populate highests based on the first 2 items.
-            // we could also start these as null and check below if they're set
-            // but this is arguably cleaner
-            long highest = Math.Max(arrayOfInts[0], arrayOfInts[1]);
-            long highestProductOf2 = arrayOfInts[0] * arrayOfInts[1];
+            // We're set the minimum values for this type as the starting values.
+            var highest = long.MinValue;
+            var highestProductOf2 = long.MinValue;
+            var highestProductOf3 = long.MinValue;
 
-            // except this one--we pre-populate it for the first /3/ items.
-            // this means in our first pass it'll check against itself, which is fine.
-            long highestProductOf3 = arrayOfInts[0] * arrayOfInts[1] * arrayOfInts[2];
-
-            // walk through items, starting at index 2
-            for (int i = 2; i < arrayOfInts.Count; ++i)
+            // walk through items
+            foreach (var current in arrayOfInts)
             {
-                int current = arrayOfInts[i];
-
                 // do we have a new highest product of 3?
                 // it's either the current highest,
                 // or the current times the highest product of two
